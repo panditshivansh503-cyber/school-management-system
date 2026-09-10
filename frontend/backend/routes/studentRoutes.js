@@ -1,0 +1,13 @@
+import express from "express";
+import { getAllStudents,getStudentById,updateStudent,deleteStudent,getStudentByEmail } from "../controllers/studentcontroller.js";
+import { addStudent } from "../controllers/admincontroller.js";
+import { protect, authorize } from "../middleware/authmiddleware.js";
+const router=express.Router();
+router.use(protect);
+router.get("/", authorize("principal","teacher"), getAllStudents);
+router.post("/", authorize("principal"), addStudent);
+router.get("/email/:email", authorize("principal","teacher","student"), getStudentByEmail);
+router.get("/:id", authorize("principal","teacher"), getStudentById);
+router.put("/:id", authorize("principal"), updateStudent);
+router.delete("/:id", authorize("principal"), deleteStudent);
+export default router;

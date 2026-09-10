@@ -1,0 +1,12 @@
+import express from "express";
+import { loginUser, getMe, seedAdmin } from "../controllers/LoginController.js";
+import { addStudent, addTeacher, addClass } from "../controllers/admincontroller.js";
+import { protect, authorize } from "../middleware/authmiddleware.js";
+const router=express.Router();
+router.post("/login",loginUser);
+router.get("/me",protect,getMe);
+router.post("/seed-admin",seedAdmin);
+router.post("/add-student",protect,authorize("principal"),addStudent);
+router.post("/add-teacher",protect,authorize("principal"),addTeacher);
+router.post("/add-class",protect,authorize("principal"),addClass);
+export default router;
