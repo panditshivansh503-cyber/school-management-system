@@ -103,6 +103,10 @@ function Login() {
                   </select>
                   <ChevronDown size={17} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400" />
                 </div>
+                <pre className="text-xs text-slate-500 whitespace-pre-line">{`sshivansh7388@gmail.com
+                  123456
+                  admin/principal`}
+                </pre>
               </div>
 
               <button type="submit" disabled={loading} className="flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-blue-700 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-60">
